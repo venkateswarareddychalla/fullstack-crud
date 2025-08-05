@@ -7,22 +7,11 @@ const sqlite3 = require("sqlite3");
 
 const app = express();
 
-// Configure CORS for production
-const corsOptions = {
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://fullstack-crud-theta.vercel.app'] // Update this with your actual Vercel domain
-    : ['http://localhost:5173', 'http://localhost:3000'],
-  credentials: true,
-  optionsSuccessStatus: 200
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
-// Use environment variable for database path in production
-const dbPath = process.env.NODE_ENV === 'production' 
-  ? path.join('/tmp', 'database.db') // Render uses /tmp for writable files
-  : path.join(__dirname, "database.db");
+
+const dbPath = path.join(__dirname, "database.db");
 
 let db = null;
 
