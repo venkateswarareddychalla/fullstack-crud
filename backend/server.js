@@ -10,7 +10,7 @@ const app = express();
 // Configure CORS for production
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://your-frontend-domain.vercel.app'] // Update this with your actual Vercel domain
+    ? ['https://fullstack-crud-theta.vercel.app'] // Update this with your actual Vercel domain
     : ['http://localhost:5173', 'http://localhost:3000'],
   credentials: true,
   optionsSuccessStatus: 200
