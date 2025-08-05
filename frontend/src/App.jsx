@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-// Use environment variable for API URL
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 const App = () => {
   const [books, setBooks] = useState([]);
@@ -24,7 +22,7 @@ const App = () => {
   const fetchBooks = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${API_BASE_URL}/books`);
+      const response = await fetch('http://localhost:3000/books');
       if (!response.ok) throw new Error('Failed to fetch books');
       const data = await response.json();
       setBooks(data);
@@ -38,7 +36,7 @@ const App = () => {
   // Create new book
   const createBook = async (bookData) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/books`, {
+      const response = await fetch('http://localhost:3000/books', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(bookData),
@@ -59,7 +57,7 @@ const App = () => {
   // Update book
   const updateBook = async (id, bookData) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/books/${id}`, {
+      const response = await fetch(`http://localhost:3000/books/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(bookData),
@@ -82,7 +80,7 @@ const App = () => {
     if (!window.confirm('Are you sure you want to delete this book?')) return;
     
     try {
-      const response = await fetch(`${API_BASE_URL}/books/${id}`, {
+      const response = await fetch(`http://localhost:3000/books/${id}`, {
         method: 'DELETE',
       });
       
