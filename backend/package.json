@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
+    "build": "npm rebuild sqlite3",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["library", "api", "crud", "express", "sqlite"],
@@ -19,5 +20,8 @@
     "jsonwebtoken": "^9.0.2",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.6"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
